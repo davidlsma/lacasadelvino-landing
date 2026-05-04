@@ -1,0 +1,171 @@
+---
+const horarios = [
+  { dia: 'Lunes',     manana: '10:00 – 13:30', tarde: '18:00 – 22:30' },
+  { dia: 'Martes',    manana: '10:00 – 13:30', tarde: '18:00 – 22:30' },
+  { dia: 'Miércoles', manana: '10:00 – 14:00', tarde: '18:00 – 22:30' },
+  { dia: 'Jueves',    manana: '10:30 – 14:00', tarde: '—'             },
+  { dia: 'Viernes',   manana: '—',              tarde: '18:00 – 22:30' },
+  { dia: 'Sábado',    manana: '10:00 – 13:30', tarde: '18:00 – 22:30' },
+  { dia: 'Domingo',   manana: '10:00 – 13:30', tarde: '18:00 – 22:30' },
+];
+
+const mapsUrl = 'https://maps.google.com/?q=145+Florentino+Ameghino+Nte,+San+Juan';
+---
+
+<section
+  id="ubicacion"
+  class="section-py"
+  style="background-color: var(--color-surface)"
+>
+  <div class="container">
+  <div class="grid md:grid-cols-2 items-start">
+
+    <!-- Dirección -->
+    <div class="flex flex-col justify-center items-center text-center direccion-col">
+      <p class="text-xs uppercase tracking-widest fade-in" style="color: #722F37; margin-bottom: 1.5rem;">
+        Encontranos
+      </p>
+      <h2
+        class="ubic-heading font-bold leading-tight fade-in"
+        style="text-transform: uppercase; margin-bottom: 3rem;"
+      >
+        Vení a la vinoteca.
+      </h2>
+
+      <div class="fade-in" style="margin-bottom: 3rem;">
+        <p class="text-lg font-medium" style="color: var(--color-on-surface); margin-bottom: 0.5rem;">
+          Florentino Ameghino Norte 146
+        </p>
+        <p style="color: var(--color-on-surface-muted)">Capital, San Juan, Argentina</p>
+      </div>
+
+      <a
+        href={mapsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+        style="background-color: #722F37;"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        Ver en Google Maps
+      </a>
+    </div>
+
+    <!-- Horarios -->
+    <div class="fade-in flex flex-col justify-center horarios-col mobile-horarios-gap">
+      <p class="text-xs uppercase tracking-widest" style="color: #722F37; margin-bottom: 2rem;">
+        Horarios de atención
+      </p>
+
+      <div class="horarios-list">
+        {horarios.map(h => (
+          <div class="horario-row">
+            <span class="horario-dia">{h.dia}</span>
+            <div class="horario-tiempos">
+              {h.manana !== '—' && <span class="tiempo">{h.manana}</span>}
+              {h.manana !== '—' && h.tarde !== '—' && <span class="separador">·</span>}
+              {h.tarde !== '—' && <span class="tiempo">{h.tarde}</span>}
+              {h.manana === '—' && h.tarde === '—' && <span class="cerrado">Cerrado</span>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 767px) {
+    .mobile-horarios-gap {
+      margin-top: 3rem;
+    }
+  }
+
+  .ubic-heading {
+    font-size: clamp(1.6rem, 3.5vw, 3.5rem);
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  #ubicacion :global(.btn-primary:hover) {
+    background-color: #5a2229 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  }
+
+  @media (min-width: 768px) {
+    .horarios-col {
+      position: relative;
+      padding-left: 4rem;
+    }
+    .horarios-col::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 100%;
+      width: 1px;
+      background-color: var(--color-surface-high);
+    }
+    .direccion-col {
+      padding-right: 4rem;
+    }
+  }
+
+  .horarios-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--color-surface-high);
+  }
+
+  .horario-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--color-surface-high);
+    gap: 1rem;
+    transition: opacity 0.2s;
+  }
+
+  .horario-dia {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--color-on-surface);
+    min-width: 6rem;
+  }
+
+  .horario-tiempos {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .tiempo {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--color-on-surface-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .separador {
+    font-size: 0.6rem;
+    color: #722F37;
+    opacity: 0.6;
+  }
+
+  .cerrado {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-on-surface-muted);
+    opacity: 0.35;
+  }
+</style>

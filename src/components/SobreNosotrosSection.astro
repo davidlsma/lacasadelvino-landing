@@ -1,0 +1,96 @@
+---
+const whatsappUrl = 'https://wa.me/5492645620073?text=Hola!%20Quiero%20conocer%20m%C3%A1s%20sobre%20La%20Casa%20del%20Vino.';
+---
+
+<section
+  id="sobre-nosotros"
+  class="section-py overflow-hidden"
+  style="background-color: var(--color-surface-low)"
+>
+  <div class="container">
+
+    <!-- Fila 1: Historia (izquierda) + imagen (derecha) -->
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center nosotros-fila1">
+      <div class="flex flex-col fade-in">
+        <h2 class="nosotros-heading font-bold uppercase leading-tight" style="margin-bottom: 2.5rem;">
+          <span class="block" style="color: var(--color-on-surface)">Historia.</span>
+        </h2>
+        <p class="text-sm leading-relaxed" style="color: var(--color-on-surface-muted);">
+          Desde 1999, La Casa del Vino San Juan se dedica a compartir la cultura y la pasión por el vino. Nacida de una tradición familiar ligada al mundo vitivinícola, la vinoteca busca ofrecer un espacio donde los amantes del vino puedan descubrir nuevas etiquetas, recibir asesoramiento y disfrutar de una experiencia cercana y auténtica.
+        </p>
+      </div>
+      <div class="overflow-hidden fade-in">
+        <img
+          src="/assets/images/historia.png"
+          alt="Historia de La Casa del Vino San Juan"
+          loading="lazy"
+          width="600"
+          height="800"
+          class="w-full object-cover img-hover"
+          style="height: 360px; object-position: center bottom;"
+        />
+      </div>
+    </div>
+
+    <!-- Fila 2: imagen (izquierda) + Nuestros Vinos (derecha) -->
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div class="overflow-hidden fade-in">
+        <img
+          src="/assets/images/nuestros-vinos.png"
+          alt="Nuestros vinos — La Casa del Vino San Juan"
+          loading="lazy"
+          width="600"
+          height="750"
+          class="w-full object-cover img-hover"
+          style="height: 400px; object-position: center"
+        />
+      </div>
+      <div class="flex flex-col fade-in">
+        <h2 class="nosotros-heading font-bold uppercase leading-tight" style="margin-bottom: 2.5rem;">
+          <span class="block" style="color: var(--color-on-surface)">Nuestros Vinos.</span>
+        </h2>
+        <p class="text-sm leading-relaxed" style="color: var(--color-on-surface-muted);">
+          En La Casa del Vino San Juan ofrecemos una cuidada selección de vinos tintos, blancos y espumantes de distintas bodegas. Cada botella es elegida por su calidad y carácter, para que nuestros clientes encuentren siempre el vino ideal para cada ocasión.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .nosotros-fila1 {
+    margin-bottom: 5rem;
+  }
+  @media (max-width: 767px) {
+    .nosotros-fila1 {
+      margin-bottom: 4rem;
+    }
+  }
+
+  .nosotros-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.6rem, 3.5vw, 3.5rem);
+  }
+
+  .nosotros-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    padding: 0.625rem 1.5rem;
+    border: 1px solid var(--color-on-surface);
+    color: var(--color-on-surface);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .nosotros-btn:hover {
+    background-color: var(--color-on-surface);
+    color: var(--color-surface);
+  }
+</style>

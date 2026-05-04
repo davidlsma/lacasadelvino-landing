@@ -1,0 +1,89 @@
+---
+const whatsappUrl = 'https://wa.me/5492645620073?text=Hola!%20Quiero%20consultar%20sobre%20sus%20vinos.';
+---
+
+<section
+  id="hero"
+  class="relative min-h-screen flex flex-col justify-center overflow-hidden"
+  data-nav-color="dark"
+>
+  <!-- Imagen de fondo -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <img
+      src="/assets/images/hero-bg.png"
+      alt=""
+      class="w-full h-full object-cover"
+      style="object-position: center 30%; transform: scale(1.12) translateX(6%);"
+      loading="eager"
+      width="1080"
+      height="1350"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(12,12,12,0.85) 0%, rgba(12,12,12,0.3) 45%, rgba(12,12,12,0.05) 100%);"></div>
+  </div>
+
+  <!-- Contenido -->
+  <div class="relative z-10 container" style="padding-top: 28vh;">
+
+    <!-- Ubicación -->
+    <p class="text-xs uppercase tracking-widest text-center sm:text-left" style="color: var(--color-on-surface-muted); letter-spacing: 0.25em; margin-bottom: 1.5rem;">
+      San Juan &nbsp;·&nbsp; Argentina
+    </p>
+
+    <!-- Titular -->
+    <h1 class="hero-heading font-bold leading-tight max-w-5xl text-center sm:text-left" style="margin-bottom: 2rem; text-transform: uppercase;">
+      <span class="block" style="color: #ffffff;">Placer para los amantes</span>
+      <span class="block" style="color: #ffffff;">del vino.</span>
+    </h1>
+
+    <!-- Botones -->
+    <div class="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
+      <a href="/#categorias" class="btn-primary hero-btn">
+        Ver productos
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-heading {
+    font-size: clamp(1.6rem, 3.5vw, 3.5rem);
+  }
+
+  .btn-ghost-hero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.5rem;
+    border: 1px solid var(--color-on-surface);
+    background-color: rgba(240, 235, 227, 0.08);
+    color: var(--color-on-surface);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .btn-ghost-hero:hover {
+    background-color: var(--color-on-surface);
+    color: var(--color-surface);
+  }
+
+  #hero :global(.btn-primary) {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.75rem;
+    background-color: #722F37;
+  }
+  #hero :global(.btn-primary:hover) {
+    background-color: #5a2229;
+  }
+
+  @media (max-width: 639px) {
+    #hero :global(.hero-btn) {
+      font-size: 0.7rem;
+      padding: 0.5rem 1.1rem;
+    }
+  }
+</style>

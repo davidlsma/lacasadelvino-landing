@@ -1,0 +1,198 @@
+---
+const navLinks = [
+  { href: '/#sobre-nosotros', label: 'Nosotros' },
+  { href: '/#categorias',     label: 'Productos' },
+  { href: '/#degustacion',    label: 'Degustación' },
+  { href: '/#ubicacion',      label: 'Ubicación' },
+  { href: '/#contacto',       label: 'Contacto' },
+];
+---
+
+<header id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <nav class="container flex items-center justify-between py-4">
+
+    <!-- Logo -->
+    <a href="/" aria-label="La Casa del Vino — Inicio">
+      <img
+        src="/assets/images/logo_transparente.png"
+        alt="La Casa del Vino"
+        class="logo-img"
+        width="120"
+        height="60"
+      />
+    </a>
+
+    <!-- Links de navegación (desktop) -->
+    <ul class="hidden md:flex gap-8 list-none">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class="nav-link text-xs uppercase tracking-widest hover:opacity-50 transition-opacity"
+            style="color: var(--color-on-surface)"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Hamburguesa (mobile) -->
+    <button
+      id="menu-toggle"
+      class="md:hidden p-2 flex flex-col gap-1.5"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+    >
+      <span class="block w-6 h-px transition-all" style="background-color: var(--color-on-surface)"></span>
+      <span class="block w-6 h-px transition-all" style="background-color: var(--color-on-surface)"></span>
+      <span class="block w-4 h-px transition-all" style="background-color: var(--color-on-surface)"></span>
+    </button>
+  </nav>
+
+</header>
+
+<!-- Menú mobile fuera del header para evitar que backdrop-filter lo atrape -->
+<div id="mobile-menu" class="mobile-overlay">
+  <div class="mobile-menu-header">
+    <a href="/" aria-label="Inicio">
+      <img src="/assets/images/logo_transparente.png" alt="La Casa del Vino" class="mobile-logo" />
+    </a>
+    <button id="menu-close" aria-label="Cerrar menú" class="mobile-close">✕</button>
+  </div>
+  <nav>
+    <ul class="flex flex-col list-none">
+      {navLinks.map(link => (
+        <li class="mobile-nav-item">
+          <a href={link.href} class="mobile-nav-link">{link.label}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</div>
+
+<script>
+  const nav        = document.getElementById('main-nav');
+  const toggle     = document.getElementById('menu-toggle');
+  const closeBtn   = document.getElementById('menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let open = false;
+
+  function openMenu() {
+    open = true;
+    toggle?.setAttribute('aria-expanded', 'true');
+    mobileMenu?.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    open = false;
+    toggle?.setAttribute('aria-expanded', 'false');
+    mobileMenu?.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  window.addEventListener('scroll', () => {
+    nav?.classList.toggle('scrolled', window.scrollY > 80);
+  }, { passive: true });
+
+  toggle?.addEventListener('click', () => open ? closeMenu() : openMenu());
+
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.id === 'menu-close' || target.closest('#menu-close')) closeMenu();
+    if (target === mobileMenu) closeMenu();
+  });
+
+  mobileMenu?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+</script>
+
+<style>
+  #main-nav {
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  #main-nav.scrolled {
+    background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+    backdrop-filter: blur(var(--nav-blur));
+    border-color: var(--color-surface-high);
+  }
+  .logo-img {
+    height: 175px;
+    width: auto;
+    display: block;
+  }
+  .nav-link {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  /* Mobile overlay */
+  .mobile-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background-color: #0c0c0c;
+    flex-direction: column;
+    padding: 0 1.75rem;
+    overflow-y: auto;
+    display: none;
+  }
+  .mobile-overlay.is-open {
+    display: flex;
+  }
+
+  .mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 0.5rem;
+  }
+
+  .mobile-logo {
+    height: 90px;
+    width: auto;
+    mix-blend-mode: screen;
+    opacity: 0.9;
+  }
+
+  .mobile-close {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    letter-spacing: 0;
+    transition: color 0.2s;
+  }
+  .mobile-close:hover {
+    color: #fff;
+  }
+
+  .mobile-nav-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 1.5rem 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .mobile-nav-link:hover {
+    color: #fff;
+  }
+</style>

@@ -1,0 +1,110 @@
+---
+import { productos } from '../data/productos';
+
+const categorias = [
+  { tipo: 'Vino Tinto',  nombre: 'Saint Felicien',  imagen: '/assets/images/cat-vino-tinto.jpg' },
+  { tipo: 'Vino Blanco', nombre: 'El Cazador',       imagen: '/assets/images/cat-vino-blanco.jpg' },
+  { tipo: 'Whisky',      nombre: 'Glenmorangie',     imagen: '/assets/images/cat-whisky.jpg' },
+  { tipo: 'Cognac',      nombre: 'Reserva San Juan', imagen: '/assets/images/cat-cognac.jpg' },
+  { tipo: 'Licor',       nombre: 'Ramazzotti',       imagen: '/assets/images/cat-licor.jpg' },
+  { tipo: 'Cervezas',    nombre: 'Heineken',         imagen: '/assets/images/cat-cervezas.jpg' },
+];
+
+const whatsappBase = 'https://wa.me/5492645620073?text=Hola!%20Quisiera%20consultar%20por%20';
+---
+
+<section
+  id="categorias"
+  class="section-py"
+  style="background-color: var(--color-surface-low)"
+>
+  <div class="container">
+
+    <!-- Título sección categorías -->
+    <div class="fade-in text-center" style="margin-bottom: 4rem;">
+      <h2
+        class="font-bold leading-tight uppercase"
+        style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.6rem, 3.5vw, 3.5rem);"
+      >
+        Una selección<br />para cada ocasión.
+      </h2>
+    </div>
+
+    <!-- Cards de categorías -->
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" style="margin-bottom: 6rem;">
+      {categorias.map(cat => (
+        <div class="categoria-card fade-in overflow-hidden">
+          <div class="overflow-hidden">
+            <img
+              src={cat.imagen}
+              alt={`${cat.tipo} — ${cat.nombre}`}
+              loading="lazy"
+              class="w-full object-cover img-hover"
+              style="height: 280px;"
+            />
+          </div>
+          <div class="text-center" style="padding-top: 1.5rem; padding-bottom: 1.5rem;">
+            <p
+              class="uppercase text-xs tracking-widest mb-1"
+              style="color: #722F37;"
+            >
+              {cat.tipo}
+            </p>
+            <h3
+              class="font-bold text-base"
+              style="font-family: 'Playfair Display', Georgia, serif; color: var(--color-on-surface); letter-spacing: 0.05em;"
+            >
+              {cat.nombre}
+            </h3>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Promos destacadas -->
+    <div id="productos" class="fade-in text-center" style="margin-bottom: 4rem;">
+      <h2
+        class="font-bold leading-tight uppercase"
+        style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.6rem, 3.5vw, 3.5rem);"
+      >
+        Promos destacadas.
+      </h2>
+      <p class="text-sm leading-relaxed mt-4" style="color: var(--color-on-surface-muted)">
+        Precios y disponibilidad pueden variar. Consultanos para actualizaciones.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      {productos.map(producto => (
+        <article class="fade-in flex flex-col">
+          <div class="overflow-hidden mb-5" style="aspect-ratio: 3/4;">
+            <img
+              src={`/assets/images/${producto.imagen}`}
+              alt={`${producto.nombre} — ${producto.varietal}`}
+              loading="lazy"
+              width="1080"
+              height="1080"
+              class="w-full h-full object-cover img-hover"
+            />
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="text-center" style="margin-top: 3rem;">
+      <a href="https://drive.google.com/file/d/1hqBSlRJTkEOL10EXN0ocksd3hkINuO_t/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background-color: #722F37;">
+        Promos de Abril
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .categoria-card {
+    transition: background-color 0.2s ease;
+  }
+  .categoria-card:hover {
+    background-color: var(--color-surface) !important;
+  }
+</style>

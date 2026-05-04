@@ -1,0 +1,66 @@
+---
+import { productos } from '../data/productos';
+
+const whatsappBase = 'https://wa.me/5492645620073?text=Hola!%20Quisiera%20consultar%20por%20';
+---
+
+<section
+  id="productos"
+  class="section-py"
+  style="background-color: var(--color-surface-low)"
+>
+  <div class="container">
+
+    <div class="mb-16 fade-in flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div>
+        <p class="text-xs uppercase tracking-widest mb-5" style="color: var(--color-secondary)">
+          Selección del mes
+        </p>
+        <h2
+          class="heading-xl font-bold leading-tight"
+          style="font-family: 'Playfair Display', Georgia, serif;"
+        >
+          Promos<br />destacadas.
+        </h2>
+      </div>
+      <p class="text-sm max-w-xs leading-relaxed" style="color: var(--color-on-surface-muted)">
+        Precios y disponibilidad pueden variar. Consultanos para actualizaciones.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {productos.map(producto => (
+        <article class="fade-in flex flex-col">
+          <div class="overflow-hidden mb-5 aspect-square">
+            <img
+              src={`/assets/images/${producto.imagen}`}
+              alt={`${producto.nombre} — ${producto.varietal}`}
+              loading="lazy"
+              width="1080"
+              height="1080"
+              class="w-full h-full object-cover img-hover"
+            />
+          </div>
+          <div class="flex flex-col flex-1 gap-1 mb-5">
+            <h3
+              class="font-bold text-lg leading-snug"
+              style="font-family: 'Playfair Display', Georgia, serif; color: var(--color-on-surface)"
+            >
+              {producto.nombre}
+            </h3>
+            <p class="text-sm" style="color: var(--color-on-surface-muted)">{producto.varietal}</p>
+          </div>
+          <a
+            href={`${whatsappBase}${encodeURIComponent(producto.nombre + ' — ' + producto.varietal)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary w-full"
+          >
+            Consultá precio
+          </a>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
