@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   output: 'static',
-  base: '/lacasadelvino-landing/',
+  base: '/lacasa-del-vino/',
   vite: {
     plugins: [tailwindcss()],
   },
