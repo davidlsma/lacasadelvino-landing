@@ -2,12 +2,12 @@
 import { productos } from '../data/productos';
 
 const categorias = [
-  { tipo: 'Vino Tinto',  nombre: 'Saint Felicien',  imagen: '/assets/images/cat-vino-tinto.jpg' },
-  { tipo: 'Vino Blanco', nombre: 'El Cazador',       imagen: '/assets/images/cat-vino-blanco.jpg' },
-  { tipo: 'Whisky',      nombre: 'Glenmorangie',     imagen: '/assets/images/cat-whisky.jpg' },
-  { tipo: 'Cognac',      nombre: 'Reserva San Juan', imagen: '/assets/images/cat-cognac.jpg' },
-  { tipo: 'Licor',       nombre: 'Ramazzotti',       imagen: '/assets/images/cat-licor.jpg' },
-  { tipo: 'Cervezas',    nombre: 'Heineken',         imagen: '/assets/images/cat-cervezas.jpg' },
+  { tipo: 'Vino Tinto',  nombre: 'Saint Felicien',  imagen: 'assets/images/cat-vino-tinto.jpg' },
+  { tipo: 'Vino Blanco', nombre: 'El Cazador',       imagen: 'assets/images/cat-vino-blanco.jpg' },
+  { tipo: 'Whisky',      nombre: 'Glenmorangie',     imagen: 'assets/images/cat-whisky.jpg' },
+  { tipo: 'Cognac',      nombre: 'Reserva San Juan', imagen: 'assets/images/cat-cognac.jpg' },
+  { tipo: 'Licor',       nombre: 'Ramazzotti',       imagen: 'assets/images/cat-licor.jpg' },
+  { tipo: 'Cervezas',    nombre: 'Heineken',         imagen: 'assets/images/cat-cervezas.jpg' },
 ];
 
 const whatsappBase = 'https://wa.me/5492645620073?text=Hola!%20Quisiera%20consultar%20por%20';
@@ -79,7 +79,7 @@ const whatsappBase = 'https://wa.me/5492645620073?text=Hola!%20Quisiera%20consul
         <article class="fade-in flex flex-col">
           <div class="overflow-hidden mb-5" style="aspect-ratio: 3/4;">
             <img
-              src={`/assets/images/${producto.imagen}`}
+              src={`assets/images/${producto.imagen}`}
               alt={`${producto.nombre} — ${producto.varietal}`}
               loading="lazy"
               width="1080"
